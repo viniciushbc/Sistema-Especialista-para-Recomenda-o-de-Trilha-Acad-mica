@@ -14,10 +14,13 @@ calcula_pontuacao(Trilha, Pontuacao, Explicacoes) :-
     Explicacoes = Pares.
 
 % Soma de pesos
-soma_pesos([], 0).
-soma_pesos([(_,P)|Ts], S) :-
-    soma_pesos(Ts, S1),
-    S is S1 + P.
+% Soma de pesos
+-soma_pesos([(_,P)|Ts], S) :-
+-    soma_pesos(Ts, S1),
+-    S is S1 + P.
++soma_pesos([(Carac,P)|Ts], S) :-
++    soma_pesos(Ts, S1),
++    S is S1 + P.
 
 % Ranking decrescente (Pontuacao, Trilha, Explicacoes)
 ranking_trilhas(Ranking) :-
