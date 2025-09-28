@@ -10,6 +10,8 @@ main(Argv) :-
         iniciar, halt
     ; Argv = ["teste", Arq] ->
         rodar_teste(Arq), halt
+    ; Argv = ["teste_sn", Arq] ->
+        rodar_teste_sn(Arq), halt
     ;
       halt(1)
     ).
