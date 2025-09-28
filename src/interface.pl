@@ -2,6 +2,7 @@
 
 limpa_respostas :- retractall(resposta(_,_)).
 
+% Le "sim"/"nao" com validacao
 le_sn(Ans) :-
     read_line_to_string(user_input, S0),
     normalize_space(string(S1), S0),
@@ -12,6 +13,7 @@ le_sn(Ans) :-
       le_sn(Ans)
     ).
 
+% Conduz o questionario e guarda as respostas
 faz_perguntas :-
     forall(pergunta(Id, Texto, _Carac),
         ( format('~w', [Texto]),
@@ -21,11 +23,13 @@ faz_perguntas :-
         )
     ).
 
+% Impressao de explicacoes
 exibe_explicacoes([]).
 exibe_explicacoes([(Carac,Peso)|Ts]) :-
     format('   - ~w (+~d)~n', [Carac, Peso]),
     exibe_explicacoes(Ts).
 
+% Impressao do ranking
 exibe_ranking([]).
 exibe_ranking([(Pont, Trilha, Explic)|Rs]) :-
     trilha(Trilha, Desc),
@@ -38,6 +42,7 @@ exibe_ranking([(Pont, Trilha, Explic)|Rs]) :-
     ),
     exibe_ranking(Rs).
 
+% Calcula e exibe o resultado
 exibe_resultado :-
     ranking_trilhas(R),
     ( R = [] ->
@@ -46,6 +51,7 @@ exibe_resultado :-
       nl, writeln('Recomendacao principal (topo do ranking) exibida acima.')
     ).
 
+% Fluxo principal interativo
 iniciar :-
     limpa_respostas,
     writeln('=== Sistema Especialista: Trilha Academica ==='),
