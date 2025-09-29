@@ -16,6 +16,15 @@ perfil(seguranca_da_informacao, curiosidade_forense,        4).
 perfil(seguranca_da_informacao, mentalidade_defensiva,      5).
 perfil(redes_e_infraestrutura,  sistemas_operacionais,      5).
 perfil(redes_e_infraestrutura,  redes_computadores,         5).
+perfil(desenvolvimento_web,     programacao_python,         2).
+perfil(desenvolvimento_web,     matematica_estatistica,     1).
+perfil(inteligencia_artificial, design_visual,              1).
+perfil(ciencia_de_dados,        design_visual,              1).
+perfil(seguranca_da_informacao, sistemas_operacionais,      2).
+perfil(seguranca_da_informacao, redes_computadores,         2).
+perfil(redes_e_infraestrutura,  programacao_python,         2).
+perfil(redes_e_infraestrutura,  mentalidade_defensiva,      2).
+
 
 % Perguntas (Id, Texto, Caracteristica)
 pergunta(1, 'Voce tem afinidade com matematica e estatistica? (sim/nao) ', matematica_estatistica).
