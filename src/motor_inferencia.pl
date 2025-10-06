@@ -19,6 +19,13 @@ soma_pesos([(_,P)|Ts], S) :-
     soma_pesos(Ts, S1),
     S is S1 + P.
 
+% Comparador para ordenar por pontuacao (desc)
+compare_pont_desc(Order, (P1,_,_), (P2,_,_)) :-
+    ( P1 > P2 -> Order = '>'
+    ; P1 < P2 -> Order = '<'
+    ; Order = '='
+    ).
+
 % Ranking decrescente (Pontuacao, Trilha, Explicacoes)
 ranking_trilhas(Ranking) :-
     findall((Pont, Trilha, Explic),
@@ -26,4 +33,4 @@ ranking_trilhas(Ranking) :-
           calcula_pontuacao(Trilha, Pont, Explic)
         ),
         Pares),
-    sort(0, @>=, Pares, Ranking).
+    predsort(compare_pont_desc, Pares, Ranking).

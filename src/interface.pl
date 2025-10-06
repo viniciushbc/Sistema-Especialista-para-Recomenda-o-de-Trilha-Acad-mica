@@ -16,7 +16,7 @@ le_sn(Ans) :-
 % Conduz o questionario e guarda as respostas
 faz_perguntas :-
     forall(pergunta(Id, Texto, _Carac),
-        ( format('~w', [Texto]),
+        ( format('~a', [Texto]),
           flush_output,
           le_sn(Ans),
           assertz(resposta(Id, Ans))
@@ -26,15 +26,15 @@ faz_perguntas :-
 % Impressao de explicacoes
 exibe_explicacoes([]).
 exibe_explicacoes([(Carac,Peso)|Ts]) :-
-    format('   - ~w (+~d)~n', [Carac, Peso]),
+    format('   - ~a (+~d)~n', [Carac, Peso]),
     exibe_explicacoes(Ts).
 
 % Impressao do ranking
 exibe_ranking([]).
 exibe_ranking([(Pont, Trilha, Explic)|Rs]) :-
     trilha(Trilha, Desc),
-    format('~nTrilha: ~w (~w pontos)~n', [Trilha, Pont]),
-    format('Descricao: ~w~n', [Desc]),
+    format('~nTrilha: ~a (~d pontos)~n', [Trilha, Pont]),
+    format('Descricao: ~a~n', [Desc]),
     ( Explic = [] ->
         format('  (Nenhuma resposta positiva contribuiu)~n', [])
     ; format('  Contribuicoes:~n', []),

@@ -2,14 +2,12 @@
 :- [motor_inferencia].
 :- [interface].
 
-
-% funcao que roda o arquivo e teste
+% funcao que roda o arquivo de teste (sim/nao)
 rodar_teste(ArquivoTesteSimNao) :-
     limpa_respostas,                    % limpa as respostas anteriores, no interface.pl
     consult(ArquivoTesteSimNao),        % carrega o arquivo.pl de teste
-    nl, writeln('=== Resultado: ==='),  
-    exibe_resultado                     % exibe o resultado atraves da funcao exibe_resultado do interface.pl que utiliza a funcao ranking_trilhas do motor de inferencia
-
+    nl, writeln('=== Resultado: ==='),
+    exibe_resultado.                    % <--- ponto final aqui!
 
 % Mesma funcao acima, mas converte as respostas 's/n' para 'sim/nao'
 rodar_teste_sn(ArquivoTesteSN) :-
